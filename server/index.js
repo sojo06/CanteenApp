@@ -6,7 +6,7 @@ import mongoose from "mongoose"
 import authRoutes from "./routes/authroutes.js"
 dotenv.config()
 const app = express()
-const port = process.env.port || 5000;
+const port =5000;
 const mongoUrl = process.env.MONGO_URL
 app.use(cors({
     origin:process.env.ORIGIN,
