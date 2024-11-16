@@ -8,8 +8,11 @@ function Navbar() {
   const navigate = useNavigate();
   const [profile, setprofile] = useState(undefined)
   // Sample profile picture URL fetched from the database
-  const user = JSON.parse(localStorage.getItem("user"))
-  const profilePicture = user.image ; // Replace with actual profile URL from the database
+  if(user){
+    if(user.image){
+       profilePicture = user.image ;
+    }
+  } // Replace with actual profile URL from the database
   // console.log(profilePicture)
   useEffect(() => {
     // Check for token when the navbar component loads
