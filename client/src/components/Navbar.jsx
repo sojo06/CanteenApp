@@ -8,6 +8,8 @@ function Navbar() {
   const navigate = useNavigate();
   const [profile, setprofile] = useState(undefined)
   // Sample profile picture URL fetched from the database
+    const user = JSON.parse(localStorage.getItem("user"))
+
   if(user){
     if(user.image){
        profilePicture = user.image ;
