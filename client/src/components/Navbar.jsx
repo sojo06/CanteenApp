@@ -9,7 +9,7 @@ function Navbar() {
   const [profile, setprofile] = useState(undefined)
   // Sample profile picture URL fetched from the database
     const user = JSON.parse(localStorage.getItem("user"))
-
+let profilePicture;
   if(user){
     if(user.image){
        profilePicture = user.image ;
