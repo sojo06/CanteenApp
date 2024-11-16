@@ -13,3 +13,4 @@ Werkzeug
 opencv-python
 matplotlib
 streamlit
+flask_cors
