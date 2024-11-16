@@ -8,10 +8,13 @@ function PublicRoute({ children }) {
     if (isLoggedIn && user.role=='student') {
       return <Navigate to="/dashboard" replace />;
     }
-    if(isLoggedIn && user.role=='admin'){
+    if(user){
+        if(isLoggedIn && user.role=='admin'){
       return <Navigate to="/admin" replace />;
 
+    } 
     }
+   
   
     return children;
   }
