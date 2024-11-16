@@ -7,10 +7,13 @@ function ProtectedRoute({ children }) {
   if (!isLoggedIn) {
     return <Navigate to="/" replace />;
   }
-  if(isLoggedIn && user.role=='admin' ){
+  if(user){
+     if(isLoggedIn && user.role=='admin' ){
     return <Navigate to="/admin" replace />;
 
   }
+  }
+ 
   return children;
 }
 
