@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-route
 import axios from 'axios';
 import Login from './pages/Login';
 import PassDashboard from './pages/PassDashboard';
-import FaceVerification from './pages/FaceVerification';
+import FaceVerification from './pages/faceVerification';
 import AdminDashboard from './pages/AdminDashboard';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile'; // Import the Profile page
