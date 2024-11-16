@@ -36,7 +36,7 @@ function ProfilePage() {
         console.log("updating profile")
         const formData = new FormData();
         formData.append('profilePicture', newProfilePicture);
-        const imageResponse = await axios.post(`http://localhost:8747/${UPDATE_PROFILE_IMAGE}`, formData, {
+        const imageResponse = await axios.post(`${HOST}/${UPDATE_PROFILE_IMAGE}`, formData, {
           headers: { 'Content-Type': 'multipart/form-data',token:token }
         });
 
@@ -46,7 +46,7 @@ function ProfilePage() {
       }
 
       // Update profile information
-      const response = await axios.post(`http://localhost:8747/${UPDATE_PROFILE}`, updatedProfile, {
+      const response = await axios.post(`${HOST}/${UPDATE_PROFILE}`, updatedProfile, {
         headers: {token:token }
       });
 

@@ -10,7 +10,7 @@ import Profile from './pages/Profile'; // Import the Profile page
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminRoute from './components/AdminRoute';
 import PublicRoute from './components/PublicRoute';
-import { GET_USER_INFO } from './utils/constants';
+import { GET_USER_INFO, HOST } from './utils/constants';
 
 function App() {
   // const navigate = useNavigate();
@@ -23,7 +23,7 @@ function App() {
       if (token) {
         try {
           // Make a GET request to fetch user info, passing the token in the Authorization header
-          const response = await axios.get(`http://localhost:8747/${GET_USER_INFO}`, {
+          const response = await axios.get(`${HOST}/${GET_USER_INFO}`, {
            headers: {token:token}
           });
 

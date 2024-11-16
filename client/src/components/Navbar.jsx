@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast, Toaster } from 'react-hot-toast';
+import { HOST } from '../utils/constants';
 
 function Navbar() {
   const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -67,7 +68,7 @@ function Navbar() {
             <div className="relative">
           <button onClick={() => setDropdownOpen(!isDropdownOpen)} className="flex items-center focus:outline-none">
             <img
-              src={`http://localhost:8747/${profilePicture}`}
+              src={`${HOST}/${profilePicture}`}
               alt="Profile"
               className="w-10 h-10 rounded-full border-2 border-white"
             />
