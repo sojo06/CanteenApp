@@ -5,6 +5,7 @@ import joblib
 from face_recognition import preprocessing
 
 app = Flask(__name__)
+CORS(app)
 
 # Define paths
 MODEL_FILE_PATH = "model/frames_trained.pkl"  # Path to the face recognition model
