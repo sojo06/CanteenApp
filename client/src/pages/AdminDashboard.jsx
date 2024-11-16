@@ -1,29 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast'; // Import toast from react-hot-toast
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { HOST, PASS_ISSUE_ROUTE } from '../utils/constants';
 
 function AdminDashboard() {
   const [studentId, setStudentId] = useState('');
-  const [status, setStatus] = useState('');
   const navigate = useNavigate();
 
   const handleIssuePass = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/admin/issue-pass', { studentId });
+      console.log(studentId)
+      const token = localStorage.getItem("token")
+      const response = await axios.post(`${HOST}/${PASS_ISSUE_ROUTE}`, { studentId },{headers:{token:token}});
       if (response.data.success) {
-        setStatus("Pass Issued Successfully!");
-        navigate(`/face-verification/`);
+        toast.success("Pass Issued Successfully!");
+        navigate('/admin/face-verification', { state: { studentId } });
       } else {
-        setStatus("Error: Unable to issue pass");
+        toast.error("Error: Unable to issue pass");
       }
     } catch (error) {
-        navigate(`/face-verification/`);
-
       console.error("Pass issuance error:", error);
-      setStatus("Error: Unable to issue pass");
+      toast.error("Error: Unable to issue pass");
+      
     }
   };
 
@@ -60,11 +62,6 @@ function AdminDashboard() {
               Issue Pass
             </button>
           </form>
-          {status && (
-            <p className={`mt-6 text-center font-semibold ${status.includes("Successfully") ? "text-green-600" : "text-red-600"}`}>
-              {status}
-            </p>
-          )}
         </div>
       </div>
       <Footer />

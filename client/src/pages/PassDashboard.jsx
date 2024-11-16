@@ -9,10 +9,12 @@ function PassDashboard() {
   useEffect(() => {
     const fetchPasses = async () => {
       const token = localStorage.getItem('token');
-      const response = await axios.get('/api/passes', {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setPasses(response.data.passes);
+      const user = JSON.parse(localStorage.getItem("user"))
+      // const response = await axios.get('/api/passes', {
+      //   headers: { Authorization: `Bearer ${token}` },
+      // });
+      setPasses(user.activepasses);
+      console.log(user.activepasses)
     };
 
     fetchPasses();
@@ -31,21 +33,22 @@ function PassDashboard() {
           </h2>
           
           <div className="grid gap-6">
-            {passes && passes.length > 0 ? (
-              passes.map((pass) => (
-                <div
-                  key={pass._id}
-                  className="bg-gray-50 border border-gray-200 p-6 rounded-lg shadow-lg flex justify-between items-center transition-transform transform hover:scale-105 hover:shadow-xl"
-                >
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800">Pass ID: {pass._id}</h3>
-                    <p className="text-gray-500">Expires: {new Date(pass.expiryDate).toLocaleDateString()}</p>
-                  </div>
-                  <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full font-semibold shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">
-                    Use Pass
-                  </button>
-                </div>
-              ))
+            {passes > 0 ? (
+              // passes.map((pass) => (
+              //   <div
+              //     key={pass._id}
+              //     className="bg-gray-50 border border-gray-200 p-6 rounded-lg shadow-lg flex justify-between items-center transition-transform transform hover:scale-105 hover:shadow-xl"
+              //   >
+              //     <div>
+              //       <h3 className="text-lg font-semibold text-gray-800">Pass ID: {pass._id}</h3>
+              //       <p className="text-gray-500">Expires: {new Date(pass.expiryDate).toLocaleDateString()}</p>
+              //     </div>
+              //     <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2 rounded-full font-semibold shadow-md transition-transform transform hover:scale-105 hover:shadow-lg">
+              //       Use Pass
+              //     </button>
+              //   </div>
+              // ))
+              passes
             ) : (
               <p className="text-center text-gray-600 font-medium">
                 You have no active passes.
